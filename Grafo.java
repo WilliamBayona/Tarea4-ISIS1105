@@ -7,15 +7,19 @@ import java.util.List;
 import java.util.Map;
 
 class Grafo {
-    // Numero de Nodos
+    // Número de Nodos
     private int nodos;
     
-    // Lista de adyacencia donde cada elemento de de la forma: nodoOrigen, lista de tuplas,... (donde cada tupla es de la forma: (nodoDestino, peso))
+    // Lista de adyacencia donde cada elemento es de la forma: nodoOrigen, lista de tuplas,... (donde cada tupla es de la forma: (nodoDestino, peso))
     private List<List<Map.Entry<Integer, Integer>>> adjList;
 
-    // Metodo Constructor
-    public Grafo(int nodos) {
+    // Indica si el grafo es dirigido o no
+    private boolean esDirigido;
+
+    // Constructor que acepta si es dirigido o no
+    public Grafo(int nodos, boolean esDirigido) {
         this.nodos = nodos;
+        this.esDirigido = esDirigido;
         adjList = new ArrayList<>(nodos);
 
         // Inicializar la lista de adjacencia con el nodoOrigen
@@ -24,12 +28,17 @@ class Grafo {
         }
     }
 
-    // Metodo para añadir arcos (nodoDestino, peso) al nodoOrigen
+    // Método para añadir arcos (nodoDestino, peso) al nodoOrigen
     public void addArco(int source, int destination, int weight) {
         adjList.get(source).add(new SimpleEntry<>(destination, weight));
+
+        // Si el grafo no es dirigido, agregar también la arista en la dirección opuesta
+        if (!esDirigido) {
+            adjList.get(destination).add(new SimpleEntry<>(source, weight));
+        }
     }
 
-    // Metodo para imprimir el grafo
+    // Método para imprimir el grafo
     public void displayGraph() {
         for (int i = 0; i < nodos; i++) {
             System.out.print("Vertex " + i + ":");
@@ -40,7 +49,7 @@ class Grafo {
         }
     }
 
-    // Metodo para crear grafo a partir de un archivo de texto
+    // Método para crear grafo a partir de un archivo de texto
     public void construirDesdeArchivo(String nombreArchivo) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
@@ -51,10 +60,18 @@ class Grafo {
                 int destino = Integer.parseInt(partes[1]);
                 int costo = Integer.parseInt(partes[2]);
 
-                // añadir el arco al grafo
+                // Añadir el arco al grafo
                 addArco(fuente, destino, costo);
             }
         }
     }
 
+    public int getNodos() {
+        return nodos;
+    }
+
+    public List<List<Map.Entry<Integer, Integer>>> getAdjList() {
+        return adjList;
+    }
 }
+
