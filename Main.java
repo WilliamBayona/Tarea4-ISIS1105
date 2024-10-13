@@ -28,7 +28,7 @@ public class Main {
                 case 1:
                     // Usar archivo 1
                     graph = manejarOpcion("data/grafoPunto1.txt", scanner);
-                    graph.displayGraph(); // Mostrar el grafo
+                    graph.displayGraph(); 
                     break;
                 case 2:
                     // Usar archivo 2
