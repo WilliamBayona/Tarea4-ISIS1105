@@ -23,18 +23,19 @@ public class Parte2 {
     // Método para encontrar todos los componentes conectados
     public void componentesConectados() {
         List<List<Entry<Integer, Integer>>> adjList = grafo.getAdjList();  // Obtener la lista de adyacencia
-        
+        List<List<Integer>> conectados = new ArrayList<List<Integer>>();
         for (int i = 0; i < visitados.size(); i++) {
             if (visitados.get(i) == 0) {  // Si el nodo no ha sido visitado
                 ArrayList<Integer> subgrafo = new ArrayList<>();  // Lista para guardar el subgrafo
                 bfs(i, adjList, subgrafo);  // Llamar al método BFS
-                System.out.println("Componente conectado: " + subgrafo);  // Imprimir el subgrafo
+                conectados.add(subgrafo);  
             }
         }
+        System.out.println(conectados);
     }
 
     // Método para explorar los vértices utilizando BFS
-    public void bfs(Integer vActual, List<List<Entry<Integer, Integer>>> adjList, ArrayList<Integer> subgrafo) {
+    private void bfs(Integer vActual, List<List<Entry<Integer, Integer>>> adjList, ArrayList<Integer> subgrafo) {
         Queue<Integer> queue = new LinkedList<>();
         queue.add(vActual);
         visitados.set(vActual, 1);  // Marcar el vértice actual como visitado

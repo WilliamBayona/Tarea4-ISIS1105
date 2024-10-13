@@ -15,10 +15,10 @@ public class Main {
         while (!salir) {
             // Mostrar el menú
             System.out.println("\n--- Menú de Opciones ---");
-            System.out.println("1. Mostrar el grafo (archivo 1)");
-            System.out.println("2. Mostrar la lista de adyacencia (archivo 2)");
-            System.out.println("3. Opción 3");
-            System.out.println("4. Opción 4");
+            System.out.println("1. Parte 1");
+            System.out.println("2. Parte 2");
+            System.out.println("3. Parte 3");
+            System.out.println("4. Parte 4");
             System.out.println("5. Salir");
             System.out.print("Elija una opción: ");
 
@@ -28,7 +28,7 @@ public class Main {
                 case 1:
                     // Usar archivo 1
                     graph = manejarOpcion("data/grafoPunto1.txt", scanner);
-                    graph.displayGraph(); // Mostrar el grafo
+                    graph.displayGraph(); 
                     break;
                 case 2:
                     // Usar archivo 2
@@ -37,8 +37,9 @@ public class Main {
                     parte2.componentesConectados(); // Ejecutar los componentes conectados
                     break;
                 case 3:
+                    graph = manejarOpcion("data/grafoPunto3.txt", scanner);
                     System.out.println("Opción 3 seleccionada.");
-                    // Implementa la funcionalidad de la opción 3
+                    
                     break;
                 case 4:
                     System.out.println("Opción 4 seleccionada.");
