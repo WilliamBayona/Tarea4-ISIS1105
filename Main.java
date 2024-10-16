@@ -1,4 +1,6 @@
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
@@ -29,11 +31,18 @@ public class Main {
                     // Usar archivo 1
                     graph = manejarOpcion("data/grafoPunto1.txt", scanner);
                     graph.displayGraph(); 
+
+                    Parte1 parte1 = new Parte1(graph);
+                    parte1.FloydWarshall(); // Ejecutar el algoritmo de Floyd-Warshall
+                    parte1.dijkstraAllPairs(); // Ejecutar el algoritmo de Dijkstra para todos los pares
+                    parte1.bellmanFordAllPairs(); // Ejecutar el algoritmo de Bellman-Ford para todos los pares
                     break;
                 case 2:
                     // Usar archivo 2
                     graph = manejarOpcion("data/grafoPunto2.txt", scanner);
                     Parte2 parte2 = new Parte2(graph);
+                    System.out.println("");
+                    System.out.println("Respuesta");
                     parte2.componentesConectados(); // Ejecutar los componentes conectados
                     break;
                 case 3:
@@ -42,8 +51,11 @@ public class Main {
                     
                     break;
                 case 4:
-                    System.out.println("Opción 4 seleccionada.");
-                    // Implementa la funcionalidad de la opción 4
+                     try {
+                        Parte4.algoritmo("data/grafoPunto4.txt"); 
+                        } catch (FileNotFoundException e) {
+                            System.out.println("Archivo no encontrado: " + e.getMessage());
+                        }
                     break;
                 case 5:
                     System.out.println("Saliendo del programa...");
