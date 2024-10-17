@@ -13,3 +13,20 @@ Para el punto 2 seleccionar no
 En el caso del punto 3 el programa leera el archivo con la estructura nodo inicial nodo final y su peso, es necesario tener estos tres datos
 
 En el caso del punto 4 el programa leera el archivo de entrada y le mostrara la respuesta
+
+
+Tiempos de ejecución:
+
+1. distances5.txt
+Floyd-Warshall: 133 microsegundos
+Dijkstra: 91 microsegundos
+Bellman-Ford: 22 microsegundos
+
+
+2. distances100.txt
+Floyd-Warshall: 50108 microsegundos
+Dijkstra: 58053 microsegundos
+Bellman-Ford: 216763 microsegundos
+
+
+3. distances1000.txt

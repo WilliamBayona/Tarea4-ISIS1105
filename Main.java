@@ -31,15 +31,47 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    // Usar archivo 1 (grafoPunto1)
-                    graph = manejarOpcion("data/grafoPunto1.txt", scanner);
-                    graph.displayGraph(); 
+                System.out.println("Seleccione el archivo a utilizar:");
+                System.out.println("1. distances5.txt");
+                System.out.println("2. distances100.txt");
+                System.out.println("3. distances1000.txt");
+                
+                int opcionArchivo = scanner.nextInt();
+                String archivoSeleccionado = "";
+            
+                // Determinar qué archivo ha seleccionado el usuario
+                switch (opcionArchivo) {
+                    case 1:
+                        archivoSeleccionado = "data/distances5.txt";
+                        break;
+                    case 2:
+                        archivoSeleccionado = "data/distances100.txt";
+                        break;
+                    case 3:
+                        archivoSeleccionado = "data/distances1000.txt";
+                        break;
+                    default:
+                        System.out.println("Opción no válida. Se utilizará distances5.txt por defecto.");
+                        archivoSeleccionado = "data/distances5.txt";
+                }
+            
+                // Cargar el grafo con el archivo seleccionado
+                graph = manejarOpcion(archivoSeleccionado, scanner); 
+                graph.displayGraph(); 
+            
+                // Ejecutar los algoritmos
+                Parte1 parte1 = new Parte1(graph);
+                String tiempo1 = parte1.FloydWarshall(); // Ejecutar el algoritmo de Floyd-Warshall
+                String tiempo2 = parte1.dijkstraAllPairs(); // Ejecutar el algoritmo de Dijkstra para todos los pares
+                String tiempo3 = parte1.bellmanFordAllPairs(); // Ejecutar el algoritmo de Bellman-Ford para todos los pares
 
-                    Parte1 parte1 = new Parte1(graph);
-                    parte1.FloydWarshall(); // Ejecutar el algoritmo de Floyd-Warshall
-                    parte1.dijkstraAllPairs(); // Ejecutar el algoritmo de Dijkstra para todos los pares
-                    parte1.bellmanFordAllPairs(); // Ejecutar el algoritmo de Bellman-Ford para todos los pares
-                    break;
+                System.out.println("Tiempos de ejecución:");
+                System.out.println(tiempo1);
+                System.out.println(tiempo2);
+                System.out.println(tiempo3);
+                
+
+                break;
                 case 2:
                     // Usar archivo 2 (grafoPunto2)
                     graph = manejarOpcion("data/grafoPunto2.txt", scanner);

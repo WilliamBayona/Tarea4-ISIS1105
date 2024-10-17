@@ -16,7 +16,7 @@ public class Parte1 {
     }
 
     // Algoritmo Floyd-Warshall
-    public void FloydWarshall() {
+    public String FloydWarshall() {
         long startTime = System.nanoTime(); // Inicio de medición de tiempo
 
         int nodos = grafo.getNodos();
@@ -59,10 +59,11 @@ public class Parte1 {
 
         printSolution(dist);
         System.out.println("");
+        return "Floyd-Warshall: " + (endTime - startTime) / 1000 + " microsegundos";
     }
 
     // Algoritmo Dijkstra
-    public void dijkstraAllPairs() {
+    public String dijkstraAllPairs() {
         long startTime = System.nanoTime(); // Inicio de medición de tiempo
 
         int nodos = grafo.getNodos();
@@ -78,6 +79,8 @@ public class Parte1 {
 
         printSolution(dist2);
         System.out.println("");
+
+        return "Dijkstra: " + (endTime - startTime) / 1000 + " microsegundos";
     }
 
     // Algoritmo Dijkstra desde un nodo fuente
@@ -121,7 +124,7 @@ public class Parte1 {
     }
 
     // Algoritmo Bellman-Ford para obtener matriz de costos mínimos
-    public void bellmanFordAllPairs() {
+    public String bellmanFordAllPairs() {
         long startTime = System.nanoTime(); // Inicio de medición de tiempo
 
         int nodos = grafo.getNodos();
@@ -137,6 +140,8 @@ public class Parte1 {
 
         printSolution(dist3);
         System.out.println("");
+
+        return "Bellman-Ford: " + ( endTime - startTime ) / 1000 + " microsegundos";
     }
 
     // Algoritmo Bellman-Ford desde un nodo fuente
