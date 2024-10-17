@@ -10,4 +10,6 @@ En el caso del punto 1 y 2 el programa le preguntara si el grafo es dirigido o n
 Para el punto 1 seleccionar si
 Para el punto 2 seleccionar no
 
+En el caso del punto 3 el programa leera el archivo con la estructura nodo inicial nodo final y su peso, es necesario tener estos tres datos
+
 En el caso del punto 4 el programa leera el archivo de entrada y le mostrara la respuesta

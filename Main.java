@@ -51,6 +51,8 @@ public class Main {
                 case 3:
                     // Usar archivo 3
                     graph = manejarOpcion("data/grafoPunto3.txt", scanner);
+                    Parte3 parte3 = new Parte3(graph);
+                    parte3.findSpanningTree();
                     System.out.println("Opción 3 seleccionada.");
                     
                     break;

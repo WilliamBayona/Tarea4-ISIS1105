@@ -14,16 +14,18 @@ public class Parte3 {
         this.adjList = grafo.getAdjList();
     }
 
-    public List<UndirectedWeightedEdge> findSpanningTree(List<UndirectedWeightedEdge> graph) {
+    public List<UndirectedWeightedEdge> findSpanningTree() {
         int n = 0;
         List<UndirectedWeightedEdge> pesos = new ArrayList<UndirectedWeightedEdge>();
 
 	    for (List<Entry<Integer, Integer>> elemento  : adjList) {
-            n += 1;
+            
             for ( Entry<Integer, Integer>  vertice : elemento ) {
                 UndirectedWeightedEdge arcos = new UndirectedWeightedEdge(n,vertice.getKey() , vertice.getValue());
                 pesos.add(arcos);
-            }    
+               
+            }  
+            n += 1;  
         }
         List<UndirectedWeightedEdge> copy = pesos;
         Collections.sort(copy, (e1, e2) -> e1.getWeight() - e2.getWeight());
@@ -32,10 +34,15 @@ public class Parte3 {
 		for(int i=0;i<copy.size() && answer.size()<n;i++) {
 			UndirectedWeightedEdge next = copy.get(i);
 			if(!p.sameSubsets(next.getV1(), next.getV2())) {
+                
 				answer.add(next);
 				p.union(next.getV1(), next.getV2());
 			}
 		}
+        System.out.println("Aristas en el Árbol de Expansión Mínima:");
+        for (UndirectedWeightedEdge edge : answer) {
+            System.out.println("Vértice 1: " + edge.getV1() + ", Vértice 2: " + edge.getV2() + ", Peso: " + edge.getWeight());
+        }
 		return answer;
 	}
 
