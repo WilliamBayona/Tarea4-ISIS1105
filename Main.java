@@ -28,7 +28,7 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    // Usar archivo 1
+                    // Usar archivo 1 (grafoPunto1)
                     graph = manejarOpcion("data/grafoPunto1.txt", scanner);
                     graph.displayGraph(); 
 
@@ -38,7 +38,7 @@ public class Main {
                     parte1.bellmanFordAllPairs(); // Ejecutar el algoritmo de Bellman-Ford para todos los pares
                     break;
                 case 2:
-                    // Usar archivo 2
+                    // Usar archivo 2 (grafoPunto2)
                     graph = manejarOpcion("data/grafoPunto2.txt", scanner);
                     Parte2 parte2 = new Parte2(graph);
                     System.out.println("");
@@ -46,11 +46,30 @@ public class Main {
                     parte2.componentesConectados(); // Ejecutar los componentes conectados
                     break;
                 case 3:
+                    // Usar archivo 3
                     graph = manejarOpcion("data/grafoPunto3.txt", scanner);
                     System.out.println("Opción 3 seleccionada.");
                     
                     break;
                 case 4:
+                    // Usar archivo 4 (grafoPunto4)
+                    //El formato del archivo de entrada (grafoPunto4) es el siguiente:
+                    //La primera línea contiene cuatro enteros separados por espacios: F S L T
+                    //F: número de fábricas
+                    //S: número de bodegas
+                    //L: número de librerías
+                    //T: número de camiones
+                    //Las siguientes S líneas contienen dos enteros separados por espacios: Si Ci
+                    //Si: identificador de la bodega i
+                    //Ci: capacidad de la bodega i
+                    //Las siguientes F líneas contienen un entero: Fi
+                    //Fi: identificador de la fábrica i
+                    //Las siguientes L líneas contienen un entero: Li
+                    //Li: identificador de la librería i
+                    //Las siguientes T líneas contienen tres enteros separados por espacios: Ti1 Ti2 Ci
+                    //Ti1: identificador del nodo de inicio del camino i
+                    //Ti2: identificador del nodo de fin del camino i
+                    //Ci: capacidad del camino i
                      try {
                         Parte4.algoritmo("data/grafoPunto4.txt"); 
                         } catch (FileNotFoundException e) {

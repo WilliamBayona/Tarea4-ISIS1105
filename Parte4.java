@@ -3,17 +3,20 @@ import java.io.*;
 
 public class Parte4 {
 
-    // BFS para encontrar un camino aumentante
+    // Hacemos un BFS para encontrar un camino aumentante
     private static boolean bfs(int[][] capacity, int[][] adjMatrix, int source, int sink, int[] parent) {
+        // Inicializamos el arreglo de visitados y la cola
         boolean[] visited = new boolean[capacity.length];
         Queue<Integer> queue = new LinkedList<>();
         queue.add(source);
         visited[source] = true;
         parent[source] = -1;
 
+        // Mientras la cola no esté vacía y no hayamos llegado al sumidero
         while (!queue.isEmpty()) {
             int u = queue.poll();
 
+        // Revisamos los nodos adyacentes
             for (int v = 0; v < capacity.length; v++) {
                 if (!visited[v] && adjMatrix[u][v] > 0) {
                     if (v == sink) {
@@ -29,16 +32,18 @@ public class Parte4 {
         return false;
     }
 
-    // Implementación del algoritmo de Edmonds-Karp
+    // Implementación del algoritmo de Edmonds-Karp para encontrar el flujo máximo
     private static int edmondsKarp(int[][] capacity, int source, int sink) {
         int u, v;
         int[][] adjMatrix = new int[capacity.length][capacity.length];
 
+        // Inicializamos la matriz de adyacencia
         for (u = 0; u < capacity.length; u++) {
             for (v = 0; v < capacity.length; v++) {
                 adjMatrix[u][v] = capacity[u][v];
             }
         }
+
 
         int[] parent = new int[capacity.length];
         int maxFlow = 0;
@@ -77,9 +82,10 @@ public class Parte4 {
         int libraries = sc.nextInt();
         int trucks = sc.nextInt();
 
-        int nodes = factories + storages + libraries + 2; // nodos en el grafo (superorigen y supersink)
-        int source = 0; // superorigen
-        int sink = nodes - 1; // supersink
+
+        int nodes = factories + storages + libraries + 2; // nodos en el grafo (superorigen y supersumidero)
+        int source = 0; // superOrigen
+        int sink = nodes - 1; // superSumidero
 
         int[][] capacity = new int[nodes][nodes];
 

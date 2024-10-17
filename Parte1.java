@@ -109,7 +109,6 @@ public class Parte1 {
                     int v = neighbor.getKey();
                     int weight = neighbor.getValue();
 
-                    // Relajación de la arista
                     if (!visited[v] && dist[u] + weight < dist[v]) {
                         dist[v] = dist[u] + weight;
                         pq.offer(new SimpleEntry<>(v, dist[v]));
@@ -158,7 +157,6 @@ public class Parte1 {
                     int v = neighbor.getKey();
                     int weight = neighbor.getValue();
 
-                    // Relajación de la arista
                     if (dist[u] != INF && dist[u] + weight < dist[v]) {
                         dist[v] = dist[u] + weight;
                     }
@@ -185,7 +183,7 @@ public class Parte1 {
 
 
 
-
+    // Método para imprimir la matriz de distancias
     private void printSolution(int dist[][]) {
         int V = dist.length;
         System.out.println("La siguiente matriz muestra las distancias más cortas entre cada par de vértices:");
